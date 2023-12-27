@@ -1,0 +1,51 @@
+<div class="container">
+    <h1>Contact</h1>
+    
+    <div class="row">
+        <div class="col-md-10">
+            <div id="flash-msg"></div>
+            <a href="/contact/add" class="btn btn-primary mb-3">Tambah contact</a>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col" style="width: 5%;">No.</th>
+                        <th scope="col" style="width: 15%;">Action</th>
+                        <th scope="col">Nama</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Umur</th>
+                        <th scope="col">Tanggal Lahir</th>
+                        <th scope="col">Nomor Telepon</th>
+                        <th scope="col">Alamat</th>
+                        <th scope="col">Foto</th>
+                    </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <% contacts.forEach((d, index) => { %>
+                        <tr>
+                            <th scope="row"><%= index+1 %></th>
+                            <td>
+                                <a href="/contact/detail/<%= d.nama %>" class="btn btn-sm btn-info">
+                                    <i class="bi bi-info-circle"></i>
+                                </a>
+                                <a href="/contact/edit/<%= d.nama %>" class="btn btn-sm btn-warning">
+                                    <i class="bi bi-pencil"></i>
+                                </a>
+                                <form action="/contact?_method=DELETE" method="post" class="d-inline">
+                                    <input type="hidden" name="nama" value="<%= d.nama %>">
+                                    <button type="submit" class="btn btn-sm btn-danger"><i class="bi bi-trash"></i></button>
+                                </form>
+                            </td>
+                            <td><%= d.nama %></td>
+                            <td><%= d.email %></td>
+                            <td><%= d.umur %></td> 
+                            <td><%= d.tanggal_lahir %></td>
+                            <td><%= d.nomor_telepon %></td> 
+                            <td><%= d.alamat %></td> 
+                            <td><img src="<%= d.foto %>" alt="<%= d.nama %>" width="50px" height="50px"></td>
+                        </tr>
+                    <% }) %>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

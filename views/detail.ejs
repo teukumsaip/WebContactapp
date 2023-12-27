@@ -1,0 +1,56 @@
+<div class="container py-5">
+    <h1 class="mb-4">Detail Contact</h1>
+    
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <% if (contact) { %>
+            <div class="card shadow">
+                
+                <div class="card-body">
+                    <h5 class="card-title mb-3"><%= contact.nama %></h5>
+                    
+                    <div class="mb-2">
+                        <strong>Email:</strong>
+                        <p class="card-text"><%= contact.email %></p>
+                    </div>
+                    
+                    <% if (contact.umur) { %>
+                    <div class="mb-2">
+                        <strong>Umur:</strong>
+                        <p class="card-text"><%= contact.umur %> tahun</p>
+                    </div>
+                    <% } %>
+                    
+                    <% if (contact.tanggal_lahir) { %>
+                    <div class="mb-2">
+                        <strong>Tanggal Lahir:</strong>
+                        <p class="card-text"><%= contact.tanggal_lahir %></p>
+                    </div>
+                    <% } %>
+                    
+                    <% if (contact.nomor_telepon) { %>
+                    <div class="mb-2">
+                        <strong>Nomor Telepon:</strong>
+                        <p class="card-text"><%= contact.nomor_telepon %></p>
+                    </div>
+                    <% } %>
+                    
+                    <% if (contact.alamat) { %>
+                    <div class="mb-2">
+                        <strong>Alamat:</strong>
+                        <p class="card-text"><%= contact.alamat %></p>
+                    </div>
+                    <% } %>
+                    
+                    <a href="/contact" class="btn btn-primary mt-3">Kembali</a>
+                </div>
+            </div>
+            <% } else { %>
+            <div class="alert alert-danger mt-4">
+                <p class="mb-0">Contact tidak ditemukan...</p>
+                <a href="/contact" class="btn btn-secondary mt-3">Kembali</a>
+            </div>
+            <% } %>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,67 @@
+<div class="container py-3">
+    <h1>Tambah Contact</h1>
+    <div class="row">
+        <div class="col-md-6">
+            <div id="flash-msg"></div>
+            <% if (!val(value, 'nama')) { %>
+            <form method="post" action="/contact">
+            <% } else { %>
+            <form method="post" action="/contact?_method=PUT">
+                <input type="hidden" name="_id" value="<%= val(value, '_id') %>">
+            <% } %>
+                <input type="hidden" name="oldNama" value="<%= val(value, 'nama') %>">
+                <div class="mb-3">
+                    <label for="nama" class="form-label">Nama</label>
+                    <input type="text" class="form-control <%= errCek(errors, 'nama') %>" id="nama" name="nama" value="<%= val(oldValue, 'nama') || val(value, 'nama') %>">
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'nama' ) %>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="email" class="form-label">Email</label>
+                    <input type="email" class="form-control <%= errCek(errors, 'email') %>" id="email" name="email" value="<%= val(oldValue, 'email') || val(value, 'email') %>">
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'email' ) %>
+                    </div>
+                <div class="mb-3">
+                    <label for="umur" class="form-label">Umur</label>
+                    <input type="number" class="form-control <%= errCek(errors, 'umur') %>" id="umur" name="umur" value="<%= val(oldValue, 'umur') || val(value, 'umur') %>">
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'umur' ) %>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="tanggal_lahir" class="form-label">Tanggal Lahir</label>
+                    <input type="date" class="form-control <%= errCek(errors, 'tanggal_lahir') %>" id="tanggal_lahir" name="tanggal_lahir" value="<%= val(oldValue, 'tanggal_lahir') || val(value, 'tanggal_lahir') %>">
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'tanggal_lahir' ) %>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="nomor_telepon" class="form-label">Nomor Telepon</label>
+                    <input type="tel" class="form-control <%= errCek(errors, 'nomor_telepon') %>" id="nomor_telepon" name="nomor_telepon" value="<%= val(oldValue, 'nomor_telepon') || val(value, 'nomor_telepon') %>">
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'nomor_telepon' ) %>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="alamat" class="form-label">Alamat</label>
+                    <textarea class="form-control <%= errCek(errors, 'alamat') %>" id="alamat" name="alamat" rows="3"><%= val(oldValue, 'alamat') || val(value, 'alamat') %></textarea>
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'alamat' ) %>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="foto" class="form-label">Foto</label>
+                    <input type="file" class="form-control <%= errCek(errors, 'foto') %>" id="foto" name="foto">
+                    <div class="invalid-feedback">
+                        <%= errMsg(errors, 'foto' ) %>
+                    </div>
+                </div>
+                </div>
+                <a href="/contact" class="btn btn-outline-primary">Kembali</a>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>
